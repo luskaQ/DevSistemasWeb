@@ -1,0 +1,70 @@
+Aula 06/03
+
+---API (Application programming interface)---
+
+Seria como o garçom do sistema, enquanto o servidor (BD) é o chef.
+
+API é um conjunto de padrões, ferramentas e protocolos que simplifica a criação de plataformas, integrando a comunicação de softwares e diferentes sistemas (não importando a plataforma ou linguagem).
+Existem protocolos de APIs. Um dos protocolos mais famosos é o API REST, com métodos HTTP como GET, POST, PUT e DELETE.
+
+Funcionamento:
+
+- O servidor aguarda por requisições
+- O cliente envia uma requisição HTTP para um endpoint.
+- Servidor processa a requisição, realiza as operações, e retorna uma resposta ao cliente, geralmente em JSON
+- O cliente recebe a resposta e pode processar os dados
+
+De modo geral, a interação com a api é feita em três etapas:
+ - Cliente faz uma chamada de API, ou seja, envia uma solicitação para extrair informação de um servidor
+ - Servidor envia a resposta
+ - API retorna resposta para o 
+ 
+Vantagens:
+ - Interoperabilidade (comunicação de diferentes sistemas)
+ - Acesso a funcionalidades sem saber como foram implementadas
+ - Reutilização de código
+ - Desenvolvimento rápido
+ - Integração de serviços
+ - Distribuição de dados
+ - Atualização independente (Separar back do front)
+ - Economia de recursos
+
+Estrutura SOAP: (utiliza XML)
+ - Envelope (envolve cabeçalho e corpo)
+ - Cabeçalho (Autentificação, identificação de transações e outros detalhes)
+ - Corpo (Elemento que contém as informações específicas da operação)
+
+Pricípios REST: (JSON, utiliza padrão do protocolo http)
+ - Interface uniforme (comunicação entre cliente e servidor de forma consistente)
+ - Separação cliente-servidor
+ - Sem estado definido (não importa o que foi feito antes, cada requisição deve ter todas as informações para processamento)
+ - Capacidade de armazenamento em cache
+ - Arquitetura de sistema em camadas
+ - Código sob 
+ 
+
+Aula 10/03
+
+---MVC
+
+A Arquitetura de um sistema tem diversos elementos, como os de interação, os que fazem parte do dominio do problema etc. Sempre definimos os elementos 
+que serão utilizados no software quando pensamos na arquietura.
+Alguns padroes já foram pensados para resolver problemas corriqueiros.
+
+A arquitetura Model-view-controller (MVC) é desenvolvida em três camadas independentes, proporcionando fácil manutenção e reaproveitamento de classes.
+
+Model: Domínio específico da aplicação (Faz interação com o BD)
+View: Tudo que é responsabilidade da tela (tal como validação de preenchimento de campo)
+Controller: Faz a intermediação entre o view e controller
+
+O model não sabe que o view existe, e o view não sabe que o model existe.
+Basicamente, o controller faz a comunicação entre interfaces e regras de negócios.
+
+**Middlewares são mecanismos que intermediam a execução de funções dentro de uma aplicação, realizando validações ou outras operações por meio de uma cadeia de responsabilidade antes de encaminhar o fluxo para a próxima função.
+
+
+1 - Usuario interage com o controller (pela view).
+2 - Controller processa os dados para o model e faz a requisição.
+3 - Model faz os calculos e retorna uma resposta para o Controller
+4 - Controller envia resposta para view
+5 - View exibe na tela os dados.
