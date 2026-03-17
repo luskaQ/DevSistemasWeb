@@ -68,3 +68,22 @@ Basicamente, o controller faz a comunicação entre interfaces e regras de negó
 3 - Model faz os calculos e retorna uma resposta para o Controller
 4 - Controller envia resposta para view
 5 - View exibe na tela os dados.
+
+Aula 13/09
+
+---Protocolo HTTP
+-> Servidor e cliente devem falar a mesma língua
+-> Hypertext Transfer Protocol (Protocolo de transferência de hipertexto)
+-> É um forma de duas máquinas (cliente e servidor) se comunicarem por meio de hipertexto (Xml, json etc)
+        Cliente faz conexão com o servidor -> cliente (normalmente navegador web) faz solicitação -> servidor retorna resposta.
+
+        **Cliente: aquele que age como Usuario
+        **Servidor: Aquele que recebe conexões e retorna resposta
+
+Métodos HTTP: GET, POST, PUT e DELETE -> Métodos comuns, ex requisitar informações
+
+Componentes principais de uma requisição HTTP:
+1. Request line
+2. Status/response line
+
+**Iremos configurar/programar como cada um desses componentes funcionar
