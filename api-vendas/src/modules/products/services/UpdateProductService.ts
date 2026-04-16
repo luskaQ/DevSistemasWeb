@@ -31,7 +31,6 @@ export default class UpdateProductService {
         product.quantity = quantity;
 
         await productRepository.save(product);
-
         return product;
     }
 }

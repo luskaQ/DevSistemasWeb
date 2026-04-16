@@ -47,7 +47,7 @@ export default class ProductController {
             const {name, price, quantity} = request.body;
             const updateProduct = new UpdateProductService();
             const product = await updateProduct.execute({id, name, price, quantity})
-            return response.status.apply(200).json(product)
+            return response.status(200).json(product)
         } catch (err) {
             next(err)
         }
