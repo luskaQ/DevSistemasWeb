@@ -5,6 +5,9 @@ import DeleteEntregaService from "../services/DeleteEntregaService";
 import ShowEntregaService from "../services/ShowEntregaService";
 import ListEntregaService from "../services/ListEntregaService";
 import ListByPesoService from "../services/ListByPesoService";
+import ListByVeiculoService from "../services/ListByVeiculoService";
+import ListByMotoristaService from "../services/ListByMotoristaService";
+import ListByErvalService from "../services/ListByErvalService";
 
 export default class EntregaController {
     public async index(request: Request, response: Response, next: NextFunction): Promise<Response | void> {
@@ -22,9 +25,42 @@ export default class EntregaController {
     public async indexByPeso(request: Request, response: Response, next: NextFunction): Promise<Response | void> {
         try {
             const listEntregasPeso = new ListByPesoService();
-            const min = Number(request.query.min); //get geralmente nao tem body, devemos usar o query (e tambem converter para number)
-            const max = Number(request.query.max);
+            const min = Number(request.body.min); 
+            const max = Number(request.body.max);
             const entregas = await listEntregasPeso.execute({ min, max });
+            return response.status(200).json(entregas);
+
+        } catch (err) {
+            next(err)
+        }
+    }
+    public async indexByMotorista(request: Request, response: Response, next: NextFunction): Promise<Response | void> {
+        try {
+            const listEntregas = new ListByMotoristaService();
+            const { motorista } = request.body;
+            const entregas = await listEntregas.execute({ motorista });
+            return response.status(200).json(entregas);
+
+        } catch (err) {
+            next(err)
+        }
+    }
+    public async indexByVeiculo(request: Request, response: Response, next: NextFunction): Promise<Response | void> {
+        try {
+            const listEntregas = new ListByVeiculoService();
+            const { veiculo } = request.body;
+            const entregas = await listEntregas.execute({ veiculo });
+            return response.status(200).json(entregas);
+
+        } catch (err) {
+            next(err)
+        }
+    }
+    public async indexByErval(request: Request, response: Response, next: NextFunction): Promise<Response | void> {
+        try {
+            const listEntregas = new ListByErvalService();
+            const { erval } = request.body;
+            const entregas = await listEntregas.execute({erval});
             return response.status(200).json(entregas);
 
         } catch (err) {

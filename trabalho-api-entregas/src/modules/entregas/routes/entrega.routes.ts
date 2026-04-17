@@ -7,6 +7,8 @@ const entregaRouter = Router();
 const entregaController = new EntregaController();
 
 
+
+
 entregaRouter.get('/', async (req, res, next) => {
     try {
         await entregaController.index(req, res, next);
@@ -14,12 +16,45 @@ entregaRouter.get('/', async (req, res, next) => {
         next(err);
     }
 });
+entregaRouter.post('/motoristas', celebrate({
+    [Segments.BODY]: Joi.object({
+        motorista: Joi.string().required(),
+    }).options({ allowUnknown: false })
+}), async (req, res, next) => {
+    try {
+        await entregaController.indexByMotorista(req, res, next);
+    } catch (err) {
+        next(err);
+    }
+});
+entregaRouter.post('/veiculos', celebrate({
+    [Segments.BODY]: Joi.object({
+        veiculo: Joi.string().required(),
+    }).options({ allowUnknown: false })
+}), async (req, res, next) => {
+    try {
+        await entregaController.indexByVeiculo(req, res, next);
+    } catch (err) {
+        next(err);
+    }
+});
+entregaRouter.post('/ervais', celebrate({
+    [Segments.BODY]: Joi.object({
+        erval: Joi.string().required(),
+    }).options({ allowUnknown: false })
+}), async (req, res, next) => {
+    try {
+        await entregaController.indexByErval(req, res, next);
+    } catch (err) {
+        next(err);
+    }
+});
 
-entregaRouter.get('/peso/', celebrate({
-    [Segments.QUERY]: {
+entregaRouter.post('/pesos', celebrate({
+    [Segments.BODY]: Joi.object({
         min: Joi.number().precision(2).required(),
         max: Joi.number().precision(2).required()
-    }
+    }).options({allowUnknown:false})
 }), async (req, res, next) => {
     try {
         await entregaController.indexByPeso(req, res, next);

@@ -6,6 +6,5 @@ export default class ListEntregaService {
     public async execute(): Promise<Entrega[]> {
         const entregaRepository = AppDataSource.getRepository(Entrega);
         return entregaRepository.find();
-
     }
 }
