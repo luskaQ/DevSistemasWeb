@@ -14,7 +14,7 @@ export default class Order{
     @OneToMany(() => OrderProducts, orders_products => orders_products.order,
         {cascade: true}
     )
-    orders_products : OrderProducts;
+    orders_products : OrderProducts[];
     
     @CreateDateColumn()
     created_at: Date;
