@@ -1,13 +1,14 @@
 import { Router } from "express";
 import EntregaController from "../controllers/EntregaController";
 import { celebrate, Joi, Segments } from "celebrate";
+import isAuthenticated from "@shared/http/middlewares/isAuthenticated";
 
 
 const entregaRouter = Router();
 const entregaController = new EntregaController();
 
 
-
+entregaRouter.use(isAuthenticated);
 
 entregaRouter.get('/', async (req, res, next) => {
     try {
