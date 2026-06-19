@@ -18,17 +18,17 @@ export default class CreateMotoristaService {
         const cnhExists = await motoristaRepository.findOne({ where: { cnh } });
         const numCtExists = await motoristaRepository.findOne({ where: { numCT } });
 
-        if (!emailExists) {
+        if (emailExists) {
             throw new AppError("Email already in use");
         }
 
-        if (!telefoneExists) {
+        if (telefoneExists) {
             throw new AppError("Telephone number already in use");
         }
-        if (!cnhExists) {
+        if (cnhExists) {
             throw new AppError("Drivers license already in use");
         }
-        if (!numCtExists) {
+        if (numCtExists) {
             throw new AppError("Workers number already in use");
         }
 

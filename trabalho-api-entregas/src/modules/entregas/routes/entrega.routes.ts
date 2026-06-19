@@ -19,7 +19,7 @@ entregaRouter.get('/', async (req, res, next) => {
 });
 entregaRouter.post('/motoristas', celebrate({
     [Segments.BODY]: Joi.object({
-        motorista: Joi.string().required(),
+        motorista_id: Joi.string().required(),
     }).options({ allowUnknown: false })
 }), async (req, res, next) => {
     try {
@@ -55,7 +55,7 @@ entregaRouter.post('/pesos', celebrate({
     [Segments.BODY]: Joi.object({
         min: Joi.number().precision(2).required(),
         max: Joi.number().precision(2).required()
-    }).options({allowUnknown:false})
+    }).options({ allowUnknown: false })
 }), async (req, res, next) => {
     try {
         await entregaController.indexByPeso(req, res, next);
