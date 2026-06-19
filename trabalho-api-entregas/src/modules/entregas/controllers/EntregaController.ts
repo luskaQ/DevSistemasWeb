@@ -37,8 +37,8 @@ export default class EntregaController {
     public async indexByMotorista(request: Request, response: Response, next: NextFunction): Promise<Response | void> {
         try {
             const listEntregas = new ListByMotoristaService();
-            const { motorista } = request.body;
-            const entregas = await listEntregas.execute({ motorista });
+            const { motorista_id } = request.body;
+            const entregas = await listEntregas.execute({ motorista_id });
             return response.status(200).json(entregas);
 
         } catch (err) {
@@ -83,9 +83,9 @@ export default class EntregaController {
 
     public async create(request: Request, response: Response, next: NextFunction): Promise<Response | void> {
         try {
-            const { peso, motorista, veiculo, erval, tipo } = request.body;
+            const { peso, motorista_id, veiculo, erval, tipo } = request.body;
             const createEntrega = new CreateEntregaService();
-            const entrega = await createEntrega.execute({ peso, motorista, veiculo, erval, tipo });
+            const entrega = await createEntrega.execute({ peso, motorista_id, veiculo, erval, tipo });
             return response.status(201).json(entrega)
         } catch (err) {
             next(err)
@@ -95,9 +95,9 @@ export default class EntregaController {
     public async update(request: Request, response: Response, next: NextFunction): Promise<Response | void> {
         try {
             const id = request.params.id as string;
-            const { peso, motorista, veiculo, erval, tipo } = request.body;
+            const { peso, motorista_id, veiculo, erval, tipo } = request.body;
             const updateEntrega = new UpdateEntregaService();
-            const entrega = await updateEntrega.execute({ id, peso, motorista, veiculo, erval, tipo })
+            const entrega = await updateEntrega.execute({ id, peso, motorista_id, veiculo, erval, tipo })
             return response.status(200).json(entrega)
         } catch (err) {
             next(err)

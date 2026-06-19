@@ -5,7 +5,7 @@ export default class Motorista {
     @PrimaryGeneratedColumn('uuid')
     id: string;
     
-    @Column('decimal')
+    @Column()
     nome: string;
 
     @Column()
